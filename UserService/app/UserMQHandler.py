@@ -1,6 +1,6 @@
 import pika, json
 
-params = pika.URLParameters('amqps://csmzdbia:5IGG1qeiX6ACePGZ8223WDt4SRn1lu11@albatross.rmq.cloudamqp.com/csmzdbia') 
+params = pika.URLParameters('amqps://abcd@albatross.rmq.cloudamqp.com/csmzdbia') 
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
 channel.exchange_declare(exchange='orders', exchange_type="fanout",
