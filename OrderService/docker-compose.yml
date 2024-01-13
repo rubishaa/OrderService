@@ -1,0 +1,27 @@
+# docker-compose.yml
+version: '3.8'
+volumes:
+  orderdb_vol:
+
+services:
+  order-api:
+    container_name: order-service
+    build:
+      context: .
+    ports:
+    - "5001:5001"
+    depends_on:
+      - order-db
+    restart: always
+
+  order-db:
+    container_name: order_dbase
+    image: postgres:10.3
+    ports:
+    - "5415:5415"
+    environment:
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=secure-password
+      - POSTGRES_DB=orders
+    volumes:
+    - orderdb_vol:/var/lib/postgresql

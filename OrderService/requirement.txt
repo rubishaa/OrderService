@@ -1,0 +1,5 @@
+!python config.py
+!pip install flask-ngrok
+!pip install pyngrok
+!pip install pika
+!ngrok authtoken NGROK_AUTH_TOKEN

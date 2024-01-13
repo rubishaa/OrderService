@@ -1,0 +1,27 @@
+# docker-compose.yml
+version: '3.8'
+volumes:
+  productdb_vol:
+
+services:
+  product-api:
+    container_name: product-service
+    build:
+      context: .
+    ports:
+    - "5002:5002"
+    depends_on:
+      - product-db
+    restart: always
+
+  product-db:
+    container_name: product_dbase
+    image: postgres:10.3
+    ports:
+    - "5425:5425"
+    environment:
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=secure-password
+      - POSTGRES_DB=products
+    volumes:
+    - productdb_vol:/var/lib/postgresql
